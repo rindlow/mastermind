@@ -4,6 +4,24 @@ import (
 	"testing"
 )
 
+func TestEvaluate_0(t *testing.T) {
+	c := new(Combination)
+	c.SetColorAt(Red, 0)
+	c.SetColorAt(Red, 1)
+	c.SetColorAt(Red, 2)
+	c.SetColorAt(Red, 3)
+
+	m := new(Combination)
+
+	e := c.Evaluate(m)
+	if e.Correct() != 0 {
+		t.Error("Correct should be 0, is", e.Correct())
+	}
+	if e.Present() != 0 {
+		t.Error("Present should be 0, is", e.Present())
+	}
+}
+
 func TestEvaluate_1(t *testing.T) {
 	c := new(Combination)
 	c.SetColorAt(Red, 0)
@@ -19,10 +37,10 @@ func TestEvaluate_1(t *testing.T) {
 
 	e := c.Evaluate(m)
 	if e.Correct() != 4 {
-		t.Error("Correct should be 4")
+		t.Error("Correct should be 4, is", e.Correct())
 	}
 	if e.Present() != 0 {
-		t.Error("Present should be 0")
+		t.Error("Present should be 0, is", e.Present())
 	}
 }
 
