@@ -15,6 +15,24 @@ const (
 	Yellow
 )
 
+func (c color) String() string {
+	switch c {
+	case Black:
+		return "Black"
+	case White:
+		return "White"
+	case Red:
+		return "Red"
+	case Green:
+		return "Green"
+	case Blue:
+		return "Blue"
+	case Yellow:
+		return "Yellow"
+	}
+	return "Not occupied"
+}
+
 type Combination [4]color
 
 func (c *Combination) SetColorAt(col color, i int) {
