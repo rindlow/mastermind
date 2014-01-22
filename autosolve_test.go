@@ -7,7 +7,7 @@ import (
 
 func TestAutoSolve(t *testing.T) {
 	rand.Seed(4711)
-	if AutoSolve(false) != 5 {
+	if AutoSolve(true) != 5 {
 		t.Error("Hidden not guessed in 5 tries")
 	}
 }
