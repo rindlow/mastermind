@@ -5,7 +5,7 @@ import (
 )
 
 func TestEvaluate_0(t *testing.T) {
-	c := Combination{[4]color{Red, Red, Red, Red}}
+	c := Combination{Red, Red, Red, Red}
 	m := new(Combination)
 
 	e := c.Evaluate(m)
@@ -18,10 +18,10 @@ func TestEvaluate_0(t *testing.T) {
 }
 
 func TestEvaluate_1(t *testing.T) {
-	c := Combination{[4]color{Red, Red, Red, Red}}
-	m := Combination{[4]color{Red, Red, Red, Red}}
+	c := Combination{Red, Red, Red, Red}
+	m := &Combination{Red, Red, Red, Red}
 
-	e := c.Evaluate(&m)
+	e := c.Evaluate(m)
 	if e.Correct() != 4 {
 		t.Error("Correct should be 4, is", e.Correct())
 	}
@@ -31,10 +31,10 @@ func TestEvaluate_1(t *testing.T) {
 }
 
 func TestEvaluate_2(t *testing.T) {
-	c := Combination{[4]color{Red, Red, Red, Yellow}}
-	m := Combination{[4]color{Red, Yellow, Yellow, Yellow}}
+	c := Combination{Red, Red, Red, Yellow}
+	m := &Combination{Red, Yellow, Yellow, Yellow}
 
-	e := c.Evaluate(&m)
+	e := c.Evaluate(m)
 	if e.Correct() != 2 {
 		t.Error("Correct should be 2, is", e.Correct())
 	}
@@ -44,10 +44,10 @@ func TestEvaluate_2(t *testing.T) {
 }
 
 func TestEvaluate_3(t *testing.T) {
-	c := Combination{[4]color{Black, White, Red, Yellow}}
-	m := Combination{[4]color{Red, White, Yellow, Blue}}
+	c := Combination{Black, White, Red, Yellow}
+	m := &Combination{Red, White, Yellow, Blue}
 
-	e := c.Evaluate(&m)
+	e := c.Evaluate(m)
 	if e.Correct() != 1 {
 		t.Error("Correct should be 1, is", e.Correct())
 	}
@@ -57,10 +57,10 @@ func TestEvaluate_3(t *testing.T) {
 }
 
 func TestEvaluate_4(t *testing.T) {
-	c := Combination{[4]color{Red, Red, Red, Yellow}}
-	m := Combination{[4]color{Red, Yellow, Red, Yellow}}
+	c := Combination{Red, Red, Red, Yellow}
+	m := &Combination{Red, Yellow, Red, Yellow}
 
-	e := c.Evaluate(&m)
+	e := c.Evaluate(m)
 	if e.Correct() != 3 {
 		t.Error("Correct should be 3, is", e.Correct())
 	}
